@@ -112,7 +112,7 @@ public class Orbit{
 
 	public static boolean findPath(Node head, String n, ArrayList<String> path)
     {
-    	//System.out.println("Node: " + head.name + ", target: " + n);
+		//System.out.println("Node: " + head.name + ", target: " + n);
         // base case
         if (head == null) {
             return false;
@@ -128,9 +128,9 @@ public class Orbit{
  
 
         for (Node c : head.children) {
-        	if (c != null && findPath(c, n, path)) {
-        		return true;
-        	}
+			if (c != null && findPath(c, n, path)) {
+				return true;
+			}
         }
 
 
