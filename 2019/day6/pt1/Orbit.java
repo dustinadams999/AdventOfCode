@@ -53,15 +53,15 @@ public class Orbit{
         System.out.println("Total is: " + total);
     }
 
+    // Fill all nodes in the tree with the appropriate level (essentially its depth)
     public static void fill(Node n, int level) {
         n.level = level;
-        if(n.children.size() != 0) {
-            for(Node c : n.children) {
-                fill(c, level+1);
-            }
+        for(Node c : n.children) {
+            fill(c, level+1);
         }
     }
 
+    // Depth first search to sum up node levels
     public static int findTotal(Node curr) {
         Stack<Node> stack = new Stack<Node>();
         int total = 0;
