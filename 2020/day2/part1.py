@@ -13,10 +13,7 @@ for line in f.readlines():
     high_bound = int(line.split()[0].split('-')[1])
     letter = line.split()[1][0]
 
-    count = 0
-    for i in code:
-        if i == letter:
-            count += 1
+    count = len([i for i in code if i == letter])
 
     if low_bound <= count <= high_bound:
         valid += 1
