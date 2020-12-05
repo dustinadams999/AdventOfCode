@@ -1,3 +1,6 @@
+"""
+usage: $ python part2.py <input-file>
+"""
 import sys
 
 f = open(sys.argv[1],'r')
@@ -10,16 +13,11 @@ for i in f.readlines():
     
     col = i[-4:].replace('R', '1')
     col = col.replace('L', '0')
-    #print('col: {}'.format(col))
     col_num = int(col[0])*pow(2,2)+int(col[1])*pow(2,1)+int(col[2])*pow(2,0)
-
-    #print('row_num: {}, col_num: {}'.format(row_num, col_num))
 
     seat_num = row_num*8 + col_num
 
     if seat_num > highest:
         highest = seat_num
-
-
 
 print(highest)

@@ -1,3 +1,6 @@
+"""
+usage: $ python part2.py <input-file>
+"""
 import sys
 
 f = open(sys.argv[1],'r')
