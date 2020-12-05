@@ -1,4 +1,6 @@
-from IPython import embed as shell
+"""
+usage: $ python part2.py <input-file>
+"""
 import re
 import sys
 
