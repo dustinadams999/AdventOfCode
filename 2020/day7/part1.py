@@ -1,3 +1,6 @@
+"""
+usage: $ python part1.py <input-file>
+"""
 import sys
 
 def main():

@@ -209,3 +209,4 @@ def main(perms):
 if __name__ == "__main__":
     perms = [''.join(p) for p in permutations('01234')]
     main(perms)                
+
