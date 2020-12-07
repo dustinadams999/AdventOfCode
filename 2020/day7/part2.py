@@ -1,3 +1,4 @@
+from IPython import embed as shell
 import sys
 
 def main():
@@ -31,22 +32,17 @@ def main():
                     else:
                         all_bags[independent_bag].append({dep: val})
 
-    total = 0
-    for bag in all_bags.keys():
-        if find_out(bag, all_bags):
-            total += 1
+    print('total bags: {}'.format(find_all_bags('shiny gold', all_bags) - 1))
 
-    print('total bags: {}'.format(total))
-
-def find_out(bag, all_bags):
+def find_all_bags(bag, all_bags):
     if all_bags[bag] == None:
-        return False
-    elif 'shiny gold' in [list(key.keys())[0] for key in all_bags[bag]]:
-        return True
+        return 1
     else:
-        result = False
+        result = 1
         for child in all_bags[bag]:
-            result = result or find_out(list(child.keys())[0], all_bags)
+            child = list(child.keys())[0]
+            result = result + ((all_bags[bag][[list(key.keys())[0] for key in all_bags[bag]].index(child)][child]) * find_all_bags(child, all_bags))
+
         return result
 
 if __name__ == '__main__':
