@@ -52,7 +52,6 @@ for line_number in line_numbers:
             exit(1)
 
     if i == len(lines):
-        shell()
         print('PROGRAM COMPLETION SUCCESS! acc: {}'.format(accumulator))
 
     elif infinite_loop: # change it back to nop's original value
