@@ -1,6 +1,7 @@
 """
 usage: $ python part2.py <input-file>
 """
+from IPython import embed as shell
 import sys
 
 def main():
@@ -42,9 +43,10 @@ def find_all_bags(bag, all_bags):
     else:
         result = 1
         for child in all_bags[bag]:
+            val = list(child.values())[0]
             child = list(child.keys())[0]
-            result = result + ((all_bags[bag][[list(key.keys())[0] for key in all_bags[bag]].index(child)][child]) * find_all_bags(child, all_bags))
-
+            result = result + (val * find_all_bags(child, all_bags))
+            
         return result
 
 if __name__ == '__main__':
