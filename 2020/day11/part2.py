@@ -1,5 +1,3 @@
-from IPython import embed as shell
-import numpy as np
 import sys
 
 lines = [f.replace('\n','') for f in open(sys.argv[1], 'r').readlines()]
@@ -56,8 +54,6 @@ while curr_count != prev_count:
                         new_seats[i] = new_seats[i][0:j] + 'L' + new_seats[i][j+1:]
 
             elif (i == 0) and (j == (len(lines[i]) - 1)): # upper right corner
-                #amt = lines[i+1][j] + lines[i+1][j-1] + lines[i][j-1]
-                
                 adj = ''
                 a = i+1
                 while a < len(lines): # down direction
@@ -94,8 +90,6 @@ while curr_count != prev_count:
                         new_seats[i] = new_seats[i][0:j] + 'L' + new_seats[i][j+1:]
 
             elif (j == 0) and (i == (len(lines) - 1)): # lower left corner
-                #amt = lines[i-1][j] + lines[i-1][j+1] + lines[i][j+1]
-                
                 adj = ''
                 a = i-1
                 while a >= 0: # up direction
@@ -132,8 +126,6 @@ while curr_count != prev_count:
                         new_seats[i] = new_seats[i][0:j] + 'L' + new_seats[i][j+1:]
 
             elif (j == (len(lines[i]) - 1) and (i == (len(lines) - 1))): # lower right corner
-                #amt = lines[i][j-1] + lines[i-1][j-1] + lines[i-1][j]
-                
                 adj = ''
                 a = i-1
                 while a >= 0: # up direction
@@ -216,7 +208,6 @@ while curr_count != prev_count:
                     break
 
 
-                #amt = lines[i][j-1] + lines[i+1][j-1] + lines[i+1][j] + lines[i+1][j+1] + lines[i][j+1]
                 occs = adj.count('#')
                 if lines[i][j] == 'L':
                     if occs == 0:
@@ -226,7 +217,6 @@ while curr_count != prev_count:
                         new_seats[i] = new_seats[i][0:j] + 'L' + new_seats[i][j+1:]
 
             elif i == len(lines) - 1: # bottom row
-                #amt = lines[i][j-1] + lines[i-1][j-1] + lines[i-1][j] + lines[i-1][j+1] + lines[i][j+1]
                 adj = ''
                 b = j-1
                 while b >= 0: # left direction
@@ -281,8 +271,6 @@ while curr_count != prev_count:
                         new_seats[i] = new_seats[i][0:j] + 'L' + new_seats[i][j+1:]
 
             elif j == 0: # left column
-                #amt = lines[i-1][j] + lines[i-1][j+1] + lines[i][j+1] + lines[i+1][j+1] + lines[i+1][j]
-                
                 adj = ''
                 a = i-1
                 while a >= 0: # upwards direction
@@ -337,7 +325,6 @@ while curr_count != prev_count:
                         new_seats[i] = new_seats[i][0:j] + 'L' + new_seats[i][j+1:]
 
             elif j == len(lines[i]) - 1: # right column
-                #amt = lines[i+1][j] + lines[i+1][j-1] + lines[i][j-1] + lines[i-1][j-1] + lines[i-1][j]
                 adj = ''
 
                 a = i-1
@@ -395,8 +382,6 @@ while curr_count != prev_count:
 
             else: # everyone else
                 adj = ''
-                #amt = lines[i-1][j-1] + lines[i-1][j] + lines[i-1][j+1] + lines[i][j+1] + lines[i+1][j+1] + lines[i+1][j] + lines[i+1][j-1] + lines[i][j-1]
-                
                 a = i-1
                 while a >= 0: # upwards direction
                     if lines[a][j] == '.':
@@ -484,8 +469,6 @@ while curr_count != prev_count:
     print('------------------------------------')
     for line in lines:
         print(line)
-    #shell()
-
 
 print(sum([new_seat.count('#') for new_seat in new_seats]))
 

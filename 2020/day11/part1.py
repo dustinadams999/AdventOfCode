@@ -1,4 +1,3 @@
-import numpy as np
 import sys
 
 lines = [f.replace('\n','') for f in open(sys.argv[1], 'r').readlines()]
