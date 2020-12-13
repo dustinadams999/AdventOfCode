@@ -10,8 +10,7 @@ headings = {
     'S': (lambda way, amount: ((way[0]-amount, way[1]))),
     'W': (lambda way, amount: ((way[0], way[1]-amount)))
 }
-# with forward, we need to subtract an offset of 90 degrees since we treat North as 0 degrees
-# but sine and cosine treat East as zero degrees, which we treat as 90 degrees.
+
 forward = {
     'F': (lambda lat, lon, way, amount: ((lat + (way[0]*amount), lon + (way[1]*amount))))
 }
@@ -34,9 +33,6 @@ lines = [f.replace('\n', '') for f in open(sys.argv[1], 'r').readlines()]
 # the waypoint starts at 1 unit north 10 units east, stored as (lat, lon)
 way = (1, 10) 
 
-lat = 0 # goes north and south
-lon = 0 # goes east and west
-
 coord = (0,0) # lat, lon
 
 for line in lines:
@@ -47,7 +43,6 @@ for line in lines:
         way = headings[direction](way, amount)
     elif direction in rotations.keys():
         way = rotations[direction][amount](way)
-
     elif direction in forward.keys():
         coord = forward[direction](coord[0], coord[1], way, amount)
     else:
